@@ -1,63 +1,101 @@
+/* General Styles */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #2b5876, #4e4376);
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .App {
   text-align: center;
+  width: 90%;
+  max-width: 800px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.city-input {
+  width: 80%;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  padding: 0 15px;
+  margin-bottom: 20px;
+  font-size: 1em;
+  outline: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Current Weather Styles */
+.weather-info {
+  margin-top: 20px;
+}
+
+.current-weather {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.left {
+  text-align: left;
+}
+
+.left h1 {
+  font-size: 4em;
+  margin: 10px 0;
+}
+
+.right {
+  text-align: left;
+}
+
+/* Weekly Forecast Styles */
+.weekly-forecast {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.forecast-day {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.city-input{
-  width: 35% ;
-  height: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
   border-radius: 10px;
-  padding-left: 1.3em;
+  width: 18%;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.cityName{
-  position: absolute;
-  
+.forecast-day img {
+  width: 50px;
+  height: 50px;
 }
 
-.weather-info{
-  height: 50vh;
-  width: 60%;
-  justify-content: space-around;
-  margin: 3em auto;
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 1.5px );
-  -webkit-backdrop-filter: blur( 1.5px );
-  border-radius: 10px;
-  padding-top: 2em;
+.forecast-day p {
+  margin: 5px 0;
+}
+
+.forecast-day .day {
+  font-weight: bold;
+  color: #fff;
+}
+
+.forecast-day .temp {
+  color: #ffcc00;
 }

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './App.css'; // Add your custom CSS here
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./App.css";
 
 const App = () => {
   const [weather, setWeather] = useState(null);
-  const [city, setCity] = useState('Toronto');
+  const [city, setCity] = useState("Berlin");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -18,58 +18,74 @@ const App = () => {
           `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5cad106a75915ec8f479e836d05161ad`
         );
         setWeather(response.data);
-        
       } catch (err) {
-        setError('Error fetching weather data');
+        setError("Error fetching weather data");
       }
       setLoading(false);
     };
     fetchData();
   }, [city]);
 
-  // Handle city change input
-  const handleCityChange = (e) => {
-    setCity(e.target.value);
-  };
-
   // Convert Kelvin to Celsius
-  const kelvinToCelsius = (kelvin) => {
-    return (kelvin - 273.15).toFixed(1);
-  };
+  const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(1);
+
+  // Weekly forecast mock data
+  const weeklyForecast = [
+    { day: "Mon", temp: "27", icon: "01d" },
+    { day: "Tue", temp: "23", icon: "09d" },
+    { day: "Wed", temp: "27", icon: "02d" },
+    { day: "Thu", temp: "31", icon: "01d" },
+    { day: "Fri", temp: "32", icon: "04d" },
+  ];
 
   // Create the weather icon URL
-  const getIconUrl = (icon) => {
-    return `http://openweathermap.org/img/wn/${icon}@2x.png`;
-  };
-
-  console.log(weather);
+  const getIconUrl = (icon) => `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   return (
     <div className="App">
-      <h1>Weather App</h1>
+      <h1>Weather Forecast</h1>
       <div>
         <input
           type="text"
           value={city}
-          onChange={handleCityChange}
+          onChange={(e) => setCity(e.target.value)}
           placeholder="Enter city"
           className="city-input"
         />
       </div>
 
       {loading && <p>Loading...</p>}
-
-
       {error && <p>{error}</p>}
 
       {weather && (
         <div className="weather-info">
-          <h2 className="cityName">{weather.name}</h2>
-          <img src={getIconUrl(weather.weather[0].icon)} alt="Weather Icon" />
-          <p>{weather.weather[0].description}</p>
-          <p>{kelvinToCelsius(weather.main.temp)}°C</p>
-          <p>Humidity: {weather.main.humidity}%</p>
-          <p>Wind: {weather.wind.speed} m/s</p>
+          <div className="current-weather">
+            <div className="left">
+              <h2>Sunday</h2>
+              <p>June 13th</p>
+              <p>{city}</p>
+              <h1>{kelvinToCelsius(weather.main.temp)}°C</h1>
+              <p>{weather.weather[0].description}</p>
+            </div>
+            <div className="right">
+              <p>Predictability: 71%</p>
+              <p>Humidity: {weather.main.humidity}%</p>
+              <p>Wind: {weather.wind.speed} m/s</p>
+              <p>Air Pressure: {weather.main.pressure} mb</p>
+              <p>Max Temp: {kelvinToCelsius(weather.main.temp_max)}°C</p>
+              <p>Min Temp: {kelvinToCelsius(weather.main.temp_min)}°C</p>
+            </div>
+          </div>
+
+          <div className="weekly-forecast">
+            {weeklyForecast.map((day, index) => (
+              <div key={index} className="forecast-day">
+                <p className="day">{day.day}</p>
+                <img src={getIconUrl(day.icon)} alt="weather icon" />
+                <p className="temp">{day.temp}°</p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
