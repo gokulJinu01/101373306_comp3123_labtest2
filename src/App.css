@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.city-input{
+  width: 35% ;
+  height: 25px;
+  border-radius: 10px;
+  padding-left: 1.3em;
+}
+
+.cityName{
+  position: absolute;
+  
+}
+
+.weather-info{
+  height: 50vh;
+  width: 60%;
+  justify-content: space-around;
+  margin: 3em auto;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1.5px );
+  -webkit-backdrop-filter: blur( 1.5px );
+  border-radius: 10px;
+  padding-top: 2em;
+}

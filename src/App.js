@@ -18,6 +18,7 @@ const App = () => {
           `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5cad106a75915ec8f479e836d05161ad`
         );
         setWeather(response.data);
+        
       } catch (err) {
         setError('Error fetching weather data');
       }
@@ -41,6 +42,8 @@ const App = () => {
     return `http://openweathermap.org/img/wn/${icon}@2x.png`;
   };
 
+  console.log(weather);
+
   return (
     <div className="App">
       <h1>Weather App</h1>
@@ -56,11 +59,12 @@ const App = () => {
 
       {loading && <p>Loading...</p>}
 
+
       {error && <p>{error}</p>}
 
       {weather && (
         <div className="weather-info">
-          <h2>{weather.name}</h2>
+          <h2 className="cityName">{weather.name}</h2>
           <img src={getIconUrl(weather.weather[0].icon)} alt="Weather Icon" />
           <p>{weather.weather[0].description}</p>
           <p>{kelvinToCelsius(weather.main.temp)}°C</p>
