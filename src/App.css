@@ -6,19 +6,19 @@ body {
   background: linear-gradient(to right, #2b5876, #4e4376);
   color: #fff;
   height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .App {
   text-align: center;
-  width: 90%;
-  max-width: 800px;
+  width: 70%; /* Increased width */
+  max-width: 1000px; /* Allow more space for larger screens */
   background: rgba(0, 0, 0, 0.7);
   border-radius: 20px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
   padding: 20px;
+  margin: 20px auto;
 }
 
 h1 {
@@ -27,7 +27,7 @@ h1 {
 }
 
 .city-input {
-  width: 80%;
+  width: 50%; /* Adjusted for wider app */
   height: 40px;
   border: none;
   border-radius: 20px;
@@ -64,10 +64,15 @@ h1 {
   text-align: left;
 }
 
+.right p {
+  font-size: 1.1em;
+  margin: 5px 0;
+}
+
 /* Weekly Forecast Styles */
 .weekly-forecast {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around; /* Balance spacing for larger app */
   margin-top: 20px;
 }
 
@@ -78,7 +83,7 @@ h1 {
   background: rgba(255, 255, 255, 0.1);
   padding: 10px;
   border-radius: 10px;
-  width: 18%;
+  width: 15%; /* Adjusted width for individual cards */
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -98,4 +103,29 @@ h1 {
 
 .forecast-day .temp {
   color: #ffcc00;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .App {
+    width: 90%;
+  }
+
+  .city-input {
+    width: 80%;
+  }
+
+  .current-weather {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .weekly-forecast {
+    flex-direction: column;
+  }
+
+  .forecast-day {
+    width: 90%;
+    margin-bottom: 10px;
+  }
 }

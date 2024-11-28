@@ -4,7 +4,7 @@ import "./App.css";
 
 const App = () => {
   const [weather, setWeather] = useState(null);
-  const [city, setCity] = useState("Berlin");
+  const [city, setCity] = useState("Toronto");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -43,7 +43,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Weather Forecast</h1>
+      <h1>Weather App</h1>
       <div>
         <input
           type="text"
@@ -53,9 +53,6 @@ const App = () => {
           className="city-input"
         />
       </div>
-
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
 
       {weather && (
         <div className="weather-info">
