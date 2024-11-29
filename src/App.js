@@ -4,11 +4,35 @@ import "./App.css";
 
 const App = () => {
   const [weather, setWeather] = useState(null);
-  const [city, setCity] = useState("Toronto");
+  const [city, setCity] = useState("Perumbavoor");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Fetch weather data from OpenWeatherMap API
+  // Function to get the current day and formatted date
+  const getCurrentDate = () => {
+    const currentDate = new Date();
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const day = days[currentDate.getDay()];
+    const date = currentDate.getDate();
+    const month = months[currentDate.getMonth()];
+    return `${day}, ${month} ${date}`;
+  };
+
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -26,10 +50,11 @@ const App = () => {
     fetchData();
   }, [city]);
 
-  // Convert Kelvin to Celsius
+
   const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(1);
 
-  // Weekly forecast mock data
+  /// just to make it look beautiful fake data
+
   const weeklyForecast = [
     { day: "Mon", temp: "27", icon: "01d" },
     { day: "Tue", temp: "23", icon: "09d" },
@@ -38,12 +63,12 @@ const App = () => {
     { day: "Fri", temp: "32", icon: "04d" },
   ];
 
-  // Create the weather icon URL
+  
   const getIconUrl = (icon) => `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   return (
     <div className="App">
-      <h1>Weather App</h1>
+      <h1>Weather Forecast</h1>
       <div>
         <input
           type="text"
@@ -58,8 +83,7 @@ const App = () => {
         <div className="weather-info">
           <div className="current-weather">
             <div className="left">
-              <h2>Sunday</h2>
-              <p>June 13th</p>
+              <h2>{getCurrentDate()}</h2>
               <p>{city}</p>
               <h1>{kelvinToCelsius(weather.main.temp)}°C</h1>
               <p>{weather.weather[0].description}</p>

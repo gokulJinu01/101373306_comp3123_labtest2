@@ -37,7 +37,6 @@ h1 {
   outline: none;
 }
 
-/* Current Weather Styles */
 .weather-info {
   margin-top: 20px;
 }
@@ -69,11 +68,11 @@ h1 {
   margin: 5px 0;
 }
 
-/* Weekly Forecast Styles */
+
 .weekly-forecast {
   display: flex;
-  justify-content: space-around; /* Balance spacing for larger app */
-  margin-top: 20px;
+  justify-content: space-around; 
+    margin-top: 20px;
 }
 
 .forecast-day {
@@ -83,7 +82,7 @@ h1 {
   background: rgba(255, 255, 255, 0.1);
   padding: 10px;
   border-radius: 10px;
-  width: 15%; /* Adjusted width for individual cards */
+  width: 15%;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -105,27 +104,3 @@ h1 {
   color: #ffcc00;
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-  .App {
-    width: 90%;
-  }
-
-  .city-input {
-    width: 80%;
-  }
-
-  .current-weather {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .weekly-forecast {
-    flex-direction: column;
-  }
-
-  .forecast-day {
-    width: 90%;
-    margin-bottom: 10px;
-  }
-}
